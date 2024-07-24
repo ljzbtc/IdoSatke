@@ -22,7 +22,9 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 */
 
 contract TokenIdoSale {
+    
     IERC20 token;
+    mapping(address => uint) public userEthAmount;
 
     bool public isTotalSet = false;
     uint public totalContribution; //
@@ -46,7 +48,7 @@ contract TokenIdoSale {
     error MoreThanMaxEthPerUser();
     error ReachHardCap();
 
-    mapping(address => uint) public userEthAmount;
+    
 
     constructor(
         address _tokenContract,

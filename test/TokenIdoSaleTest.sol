@@ -129,8 +129,8 @@ contract TokenIdoSaleTest is Test {
         // 设置 IDO 开始时间
         vm.warp(idoSale.IDO_START_TIME() + 1 hours);
 
-        uint userNum = 1700;
-        uint userPerEth =  0.1 ether;
+        uint userNum = 20;
+        uint userPerEth =  5 ether;
 
         // 创建足够多的用户来达到最小募集额
         address[] memory users = new address[](userNum);
