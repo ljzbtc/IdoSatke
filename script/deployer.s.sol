@@ -2,11 +2,12 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
-import {TokenIdoSale} from "../src/TokenIdoSale.sol";
+import {JustArray} from "../src/JustArray.sol";
+
 
 contract MyTokenScript is Script {
 
-    TokenIdoSale public idoSale;
+    JustArray public contractNeedToDeploy;
 
     function setUp() public {}
 
@@ -14,13 +15,10 @@ contract MyTokenScript is Script {
 
         // uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast();
-        idoSale = new TokenIdoSale(
-            address(0x0), // TOKEN_CONTRACT
-            address(0x0), // PROJECT_OWNER
-            1731732076, // IDO_START_TIME
-            1732762076 // IDO_END_TIME
+        contractNeedToDeploy = new JustArray(
+
         );
-        console.log("MyToken deployed to:", address(idoSale));
+        console.log("MyToken deployed to:", address(contractNeedToDeploy));
 
         vm.stopBroadcast();
     }

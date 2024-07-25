@@ -55,7 +55,8 @@ contract EsToken is ERC20, Ownable {
         userLock.amount = 0;
 
         IERC20(tokenContract).transfer(msg.sender, reward);
-        _burn(msg.sender, amount);
+    
+        _burn(msg.sender, reward);
 
         emit UserClaimToken(msg.sender, reward);
         emit UserBurnEsToken(msg.sender, amount);

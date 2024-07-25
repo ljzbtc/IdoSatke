@@ -39,7 +39,6 @@ contract TokenStakePool {
         token = IERC20(_tokenContract);
     }
 
-
     function getStakeInfo(address user) public view returns (StakeInfo memory) {
         return userStakeInfo[user];
     }
@@ -52,11 +51,9 @@ contract TokenStakePool {
         token.transferFrom(msg.sender, address(this), stakeAmount);
 
         if (userStakeInfo[msg.sender].stake > 0) {
-            userStakeInfo[msg.sender].unclaimdReward +=
-                ((block.timestamp - userStakeInfo[msg.sender].lastUpdateTime) *
-                    userStakeInfo[msg.sender].stake *
-                    REWARD_PER_DAY) /
-                86400;
+
+            userStakeInfo[msg.sender].unclaimdReward = calculateReward(msg.sender);
+
         } else {
             userStakeInfo[msg.sender].unclaimdReward = 0;
         }
